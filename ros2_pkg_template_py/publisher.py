@@ -6,10 +6,10 @@ from rclpy.node import Node
 from std_msgs.msg import String
 
 
-class Publisher(Node):
+class Talker(Node):
 
     def __init__(self):
-        super().__init__('publisher')
+        super().__init__('talker')
         self.publisher_ = self.create_publisher(String, 'chatter', 10)
         timer_period = 1.0
         self.timer = self.create_timer(timer_period, self.timer_callback)
@@ -25,7 +25,7 @@ class Publisher(Node):
 
 def main(args = None):
     rclpy.init(args = args)
-    node = Publisher()
+    node = Talker()
 
     try:
         rclpy.spin(node)
